@@ -21,7 +21,7 @@
 [Github page](https://kotchaparn-w.github.io/react_itune_album_search/)
 
 
- ***Let's take a look at todolists_redux***
+ ***Let's take a look at reTune appx***
 
 ![Application Screenshot](./src/Images/SC.png)
 
