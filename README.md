@@ -1,10 +1,8 @@
 # reTune
 
-### Purposes
-    To create a SPA with React and Redux libraly with no server side. 
 
 ### How this app works
-    This appplication allows users to add todo lists, mark comleted, edit lists and delete lists. Users can also all the lists that are completed.
+    This is the application is built on React library that allows you to search for album from iTune APIs
 
 ### Libraries
 * React
