@@ -25,3 +25,6 @@
 
 ![Application Screenshot](./src/Images/SC.png)
 
+
+**Alow you to listen a track insinde the album**
+![Application Screenshot](./src/Images/SC2.png)

@@ -21,6 +21,7 @@ class MainHeader extends Component {
     }
 
     handleFormSubmit({ searchTerm }) {
+        console.log(searchTerm);
 
         const replacedTerm = searchTerm.replace(/ /g, "+");
         this.setState({ inputClass: this.state.inputClass + ' loading' });
@@ -55,13 +56,13 @@ class MainHeader extends Component {
     }
 }
 
-// function validate (values) {
-//     const errors = {};
-//     if(!values.searchTerm){
-//         errors.searchTerm = true
-//     }
-//     return errors;
-// }
+function validate (values) {
+    const errors = {};
+    if(!values.searchTerm){
+        errors.searchTerm = true
+    }
+    return errors;
+}
 
 function mapStateToProps(state) {
     return {
@@ -77,5 +78,6 @@ Header.propsTypes = {
 
 export default reduxForm({
     form: 'searchInput',
-    field: 'searchTerm'
+    field: 'searchTerm',
+    validate
 })(connect(mapStateToProps, actions)(MainHeader));

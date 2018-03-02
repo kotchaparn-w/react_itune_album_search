@@ -9,8 +9,8 @@ class ActionModal extends Component {
     }
   }
   componentWillReceiveProps(nextProps){
-    const { albumLists, isAlbumFething } = nextProps;
-      if(albumLists && albumLists.length == 0 && !isAlbumFething) {
+    const { albumLists, isAlbumFetching } = nextProps;
+      if(albumLists && albumLists.length == 0 && !isAlbumFetching) {
       this.setState({ isModalOpen: true });
     }
   }

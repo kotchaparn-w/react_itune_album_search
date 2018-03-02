@@ -10,6 +10,7 @@ import Jumbotron from '../containers/Jumbotron';
 class AlbumContainer extends Component {
 
     render() {
+        
         const { albumLists, isAlbumFetching } = this.props;
         return (
             <div>
