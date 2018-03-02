@@ -2,6 +2,7 @@
   "name": "react_itune_album_search",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kotchaparn-w.github.io/react_itune_album_search/",
   "dependencies": {
     "axios": "^0.18.0",
     "gh-pages": "^1.1.0",
