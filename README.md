@@ -9,7 +9,7 @@
 ### Libraries
 * React
 * Redux
-* React-Router
+* React-Router ^v.4
 * Redux-Form
 
 ### Style
@@ -20,7 +20,7 @@
 ### To use this app
 
 **Please click to start**
-[Github page](https://kotchaparn-w.github.io/todolist_redux/)
+[Github page](https://kotchaparn-w.github.io/react_itune_album_search/)
 
 
  ***Let's take a look at todolists_redux***
