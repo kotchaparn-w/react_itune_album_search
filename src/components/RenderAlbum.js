@@ -35,7 +35,7 @@ class RenderAlbum extends Component {
                     albumLists.map(albumList => (
                         <div className="column" 
                         key={albumList.trackId}>
-                            <a href={albumList.artistViewUrl} target="_blank">
+                            <Link to={albumList.artistViewUrl} target="_blank">
                                 <div className="ui link cards" >
                                     <div className="card"
                                         onMouseEnter={()=> this.playAudio(albumList.previewUrl, albumList.trackId)}
@@ -63,7 +63,7 @@ class RenderAlbum extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                     ))
                 }
