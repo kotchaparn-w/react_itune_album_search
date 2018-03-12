@@ -37,7 +37,7 @@ export function fetchAlbum ( searchTerm ) {
 
                 if (response.data.resultCount !== 0) {
                     dispatch(fetchAlbumSuccess(response.data.results));
-                    history.push(`/${searchTerm}`);
+                    history.push(`${process.env.PUBLIC_URL}/${searchTerm}`);
                 } else {
                     dispatch(fetchAlbumFail('There is no result with this search term'));
                 }

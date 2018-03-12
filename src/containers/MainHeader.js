@@ -36,7 +36,7 @@ class MainHeader extends Component {
             <Segment secondary>
                 <Grid container>
                 <Grid.Column width={3}>
-                    <Link to="/">
+                    <Link to={`${process.env.PUBLIC_URL}/`}>
                         <Header as='h3'><Icon name='apple'></Icon>reTune</Header>
                     </Link>
                 </Grid.Column>
