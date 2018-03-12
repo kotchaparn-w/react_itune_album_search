@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+
+.ui.header {
+  padding-top: 0.6rem;
+}
+
+.ui.input.error input {
+  background-color: #fff6f6;
+  border-color: #e0b4b4;
+  color: #9f3a38;
+  box-shadow: none;
+}
+
+.ui.small.basic.modal.transition.visible.active {
+  margin-top: 10rem !important;
+  margin-left: 20rem;
+}
+
+.ui.secondary.segment {
+  margin-bottom: 0;
+  z-index: 3;
+}
+
+
+@media (min-width: 1800px) {
+  .welcome-text {
+    margin-left: 90rem;
+    margin-top: 40rem !important;
+  }
+}

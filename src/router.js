@@ -1,14 +1,17 @@
 import React from 'react';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 
 import history from './history';
-import App from './App';
-import MainComponent from './components/MainComponent';
+import App from './containers/App';
+import AlbumContainer from './containers/AlbumContainer';
+import Nomatch from './components/Nomatch';
 
-export default props => (
+export default ()=> (
     <Router history={history} >
-        <App>
-            <Route path="/" component={MainComponent} />
-        </App>
+        <Switch >
+            <Route exact path="/" component={App} />
+            <Route exact path="/:artist" component={AlbumContainer} />
+            <Route path="*" component={Nomatch} />
+        </Switch>
     </Router>
 );

@@ -3,25 +3,26 @@ import PropsTypes from 'prop-types';
 import { Header, Segment, Icon, Grid } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import * as actions from '../actions';
 
 
 class MainHeader extends Component {
     constructor(props){
         super(props)
-        this.state ={
+        this.state = {
             inputClass: 'ui icon fluid input'
         }
     }
 
     componentWillReceiveProps(nextProps){
-        if(nextProps.isAlbumFetching == false){
-            this.setState({ inputClass: this.state.inputClass.replace('loading', '') });
+        if(nextProps.isAlbumFetching === false){
+            this.setState({ inputClass: this.state.inputClass.replace('loading', null) });
         }
     }
 
     handleFormSubmit({ searchTerm }) {
-        console.log(searchTerm);
 
         const replacedTerm = searchTerm.replace(/ /g, "+");
         this.setState({ inputClass: this.state.inputClass + ' loading' });
@@ -35,7 +36,9 @@ class MainHeader extends Component {
             <Segment secondary>
                 <Grid container>
                 <Grid.Column width={3}>
-                    <Header as='h3'><Icon name='apple'></Icon>reTune</Header>
+                    <Link to="/">
+                        <Header as='h3'><Icon name='apple'></Icon>reTune</Header>
+                    </Link>
                 </Grid.Column>
                 <Grid.Column width={13}>
                 <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>

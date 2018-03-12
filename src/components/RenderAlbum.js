@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Image } from 'semantic-ui-react';
+import { Grid, Image, Card, Dimmer, Header, Icon } from 'semantic-ui-react';
 import PropsTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as moment from 'moment';
@@ -27,53 +27,56 @@ class RenderAlbum extends Component {
         } 
     }
 
+    renderAlbumList(albumList) {
+        const { trackId, collectionViewUrl, artistViewUrl, previewUrl, artworkUrl100, collectionName, artistName, releaseDate } = albumList;
+        const { audioTrackId } = this.state;
+        const isDimming = audioTrackId === trackId ? true : false;
+        return (
+            <Grid.Column key={trackId}>
+                <Link to={collectionViewUrl || artistViewUrl} target="_blank">
+                    <Card 
+                    link
+                    onMouseEnter={()=> this.playAudio(previewUrl, trackId)}
+                    onMouseLeave={()=> this.pauseAudio()}
+                    >
+                        <Dimmer.Dimmable as={Image} dimmed={isDimming} >
+                            <Image src={artworkUrl100} />
+                            <Dimmer active={isDimming} >
+                                <Header as='h3' icon inverted>
+                                <Icon name='music' />
+                                    Playing...
+                                </Header>
+                            </Dimmer>
+                        </Dimmer.Dimmable>
+                        <Card.Content>
+                            <Card.Header>
+                                {collectionName}
+                            </Card.Header>
+                            <Card.Meta>
+                                <span>{artistName}</span>
+                            </Card.Meta>
+                        </Card.Content>
+                        <Card.Content extra>
+                            {`Release: ${moment(releaseDate).format('LL')}`}
+                        </Card.Content>
+                    </Card>
+                </Link>
+            </Grid.Column>
+        )
+    }
+
     render(){
         const albumLists = this.props.albumLists;
         return(
-            <div className="ui five column grid">
-                {
-                    albumLists.map(albumList => (
-                        <div className="column" 
-                        key={albumList.trackId}>
-                            <Link to={albumList.artistViewUrl} target="_blank">
-                                <div className="ui link cards" >
-                                    <div className="card"
-                                        onMouseEnter={()=> this.playAudio(albumList.previewUrl, albumList.trackId)}
-                                        onMouseLeave={()=> this.pauseAudio()}
-                                    >
-                                        <div className="image" >
-                                            <img src={albumList.artworkUrl100} />
-                                            <div className={this.state.audioTrackId == albumList.trackId ? 'ui active dimmer': 'ui dimmer'}>
-                                            <div className="content">
-                                            <h4 className="ui inverted icon header">
-                                                <i className="music icon"></i>
-                                                Playing...
-                                            </h4>
-                                            </div>
-                                        </div>
-                                        </div>
-                                        <div className="content">
-                                            <span className="header">{albumList.collectionName}</span>
-                                            <div className="meta">
-                                                <span>{albumList.artistName}</span>
-                                            </div>
-                                        </div>
-                                        <div className="extra content">
-                                        {`Release: ${moment(albumList.releaseDate).format('LL')}`}
-                                        </div>
-                                    </div>
-                                </div>
-                            </Link>
-                        </div>
-                    ))
-                }
-            </div>
+            <Grid columns={5}>
+                {albumLists.map(albumList => this.renderAlbumList(albumList))}
+            </Grid>
         )    
     }
 }
 
  RenderAlbum.propsType = {
-     albumLists: PropsTypes.array
+     albumLists: PropsTypes.array,
  }
 
 export default RenderAlbum;

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history';
 import { reset } from 'redux-form'
 import {
     FETCH_ALBUM_SUCCESS,
@@ -33,11 +34,16 @@ export function fetchAlbum ( searchTerm ) {
             axios.get(URL)
             .then(response => {
                 dispatch(reset('searchInput'));
-                dispatch(fetchAlbumSuccess(response.data.results));
+
+                if (response.data.resultCount !== 0) {
+                    dispatch(fetchAlbumSuccess(response.data.results));
+                    history.push(`/${searchTerm}`);
+                } else {
+                    dispatch(fetchAlbumFail('There is no result with this search term'));
+                }
             })
             .catch(error => {
-                dispatch(fetchAlbumFail(error.response))
+                dispatch(fetchAlbumFail(error.response));
             });     
         }   
-    // }
 }
